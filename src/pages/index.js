@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
+import StyledBookItem from '../components/StyledBookItem';
 
 const IndexPage = ({ data }) => {
 
@@ -12,7 +13,7 @@ const IndexPage = ({ data }) => {
       <SEO title="Home" />
         {data.allBook.edges.map(edge => {
           return (
-            <div key={edge.node.id}>
+            <StyledBookItem key={edge.node.id}>
               <h2>
                 {edge.node.title} - <small>{edge.node.author.name}</small>
               </h2>
@@ -22,7 +23,7 @@ const IndexPage = ({ data }) => {
               <Link to={`/book/${edge.node.id}`}>
                 Rejoignez la conversation
               </Link>
-            </div>
+            </StyledBookItem>
           )
         })}
     </Layout>
